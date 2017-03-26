@@ -10,11 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\images\image.jpg" />
     <Content Include="wwwroot\images\image1.jpg" />
-    <Content Include="wwwroot\images\CAD-diploma-main-image-2.jpg" />
-    <Content Include="wwwroot\images\cmaakc13h4u385.jpg" />
-    <Content Include="wwwroot\images\d33bc45952ddb5667a13b839a07aa38a.jpg" />
     <Content Include="wwwroot\images\image2.jpg" />
     <Content Include="wwwroot\images\image3.jpg" />
     <Content Include="wwwroot\images\image4.jpg" />
