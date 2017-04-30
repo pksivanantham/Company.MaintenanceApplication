@@ -131,7 +131,6 @@ D:\E drive backup\Projects\Company.MaintenanceApplication\Company.MaintenanceApp
 D:\E drive backup\Projects\Company.MaintenanceApplication\Company.MaintenanceApplication\bin\Debug\net452\win7-x86\System.Threading.Tasks.Extensions.dll
 D:\E drive backup\Projects\Company.MaintenanceApplication\Company.MaintenanceApplication\obj\Debug\net452\win7-x86\Company.MaintenanceApplication.csprojResolveAssemblyReference.cache
 D:\E drive backup\Projects\Company.MaintenanceApplication\Company.MaintenanceApplication\obj\Debug\net452\win7-x86\Company.MaintenanceApplication.csproj.Company.MaintenanceApplication.exe.config
-D:\E drive backup\Projects\Company.MaintenanceApplication\Company.MaintenanceApplication\obj\Debug\net452\win7-x86\UserSecretsAssemblyInfo.cs
 D:\E drive backup\Projects\Company.MaintenanceApplication\Company.MaintenanceApplication\obj\Debug\net452\win7-x86\Company.MaintenanceApplication.AssemblyInfo.cs
 D:\E drive backup\Projects\Company.MaintenanceApplication\Company.MaintenanceApplication\obj\Debug\net452\win7-x86\Company.MaintenanceApplication.exe
 D:\E drive backup\Projects\Company.MaintenanceApplication\Company.MaintenanceApplication\obj\Debug\net452\win7-x86\Company.MaintenanceApplication.pdb
