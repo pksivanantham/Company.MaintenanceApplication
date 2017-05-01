@@ -20,6 +20,7 @@ namespace Company.MaintenanceApplication
 {
     public class Startup
     {
+        string _dbConnectionString = null;
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
@@ -42,6 +43,7 @@ namespace Company.MaintenanceApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            _dbConnectionString = Configuration["DefaultConnection"];
             services.Configure<MvcOptions>(options =>
             {
                 //Require Https connection
@@ -50,10 +52,11 @@ namespace Company.MaintenanceApplication
 
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(_dbConnectionString));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(config => {
+                config.SignIn.RequireConfirmedEmail = true;
+            }).AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
@@ -91,10 +94,11 @@ namespace Company.MaintenanceApplication
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            //Redirecting HTTP requests to the HTTPS Connection
             var options = new RewriteOptions().AddRedirectToHttps();
                 if (env.IsDevelopment())
             {
+                
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
                 app.UseBrowserLink();
