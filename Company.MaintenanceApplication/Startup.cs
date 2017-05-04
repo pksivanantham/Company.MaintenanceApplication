@@ -87,6 +87,8 @@ namespace Company.MaintenanceApplication
                 // User settings
                 options.User.RequireUniqueEmail = true;
             });
+            //Configuring my mail box username and passwords in UserSecrets.json to custom class
+            services.Configure<AuthMessageSenderOptions>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
