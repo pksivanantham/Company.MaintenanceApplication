@@ -3,7 +3,7 @@ os: Windows Server 2012 R2
 build:
   verbosity: minimal
 install:
- - cmd: nuget sources add -Name Nuget.org -Source https://api.nuget.org/v3/index.json
+#  - cmd: nuget sources add -Name Nuget.org -Source https://api.nuget.org/v3/index.json
 #  - cmd: nuget sources add -Name AspNetVNext -Source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json
  - ps: "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://github.com/dotnet/cli/blob/master/scripts/obtain/dotnet-install.ps1'))}"
  - ps: dnvm install 1.0.0-rc1-update1
