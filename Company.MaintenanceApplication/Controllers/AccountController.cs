@@ -132,7 +132,7 @@ namespace Company.MaintenanceApplication.Controllers
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                        $"<b>Thanks for register</b>.Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                        $"<b>Thanks for register</b><br>.Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a><br>Best regards<br>Sivanantham ");
                    // await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
                     return RedirectToLocal(returnUrl);
