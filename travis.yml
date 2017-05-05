@@ -12,8 +12,8 @@ matrix:
 
 script:
   # Run a new console app
-  - mkdir -p "test/test-dotnet-new" && pushd "test/test-dotnet-new"
-  - dotnet new
+  # - mkdir -p "test/test-dotnet-new" && pushd "test/test-dotnet-new"
+  # - dotnet new
   - dotnet restore
-  - dotnet --verbose run a b
-  - popd
+  # - dotnet --verbose run a b
+  # - popd
