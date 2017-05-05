@@ -23,5 +23,13 @@ namespace Company.MaintenanceApplication.Models.AccountViewModels
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        [StringLength(maximumLength: 50)]
+        public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
+        [StringLength(maximumLength: 50)]
+        public string LastName { get; set; }
     }
 }

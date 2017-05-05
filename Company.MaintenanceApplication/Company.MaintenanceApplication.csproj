@@ -10,22 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\images\image.jpg" />
     <Content Include="wwwroot\images\image1.jpg" />
-    <Content Include="wwwroot\images\CAD-diploma-main-image-2.jpg" />
-    <Content Include="wwwroot\images\cmaakc13h4u385.jpg" />
-    <Content Include="wwwroot\images\d33bc45952ddb5667a13b839a07aa38a.jpg" />
     <Content Include="wwwroot\images\image2.jpg" />
     <Content Include="wwwroot\images\image3.jpg" />
     <Content Include="wwwroot\images\image4.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="1.16.0" />
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Rewrite" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.1" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.1.1" />
