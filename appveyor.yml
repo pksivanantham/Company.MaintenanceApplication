@@ -1,15 +1,14 @@
 version: 1.0.{build}
-image: Visual Studio 2017
-#  os: Windows Server 2012 R2
+os: Visual Studio 2017
 build:
   verbosity: minimal
-install:
+# install:
 #  - cmd: nuget sources add -Name Nuget.org -Source https://api.nuget.org/v3/index.json
 #  - cmd: nuget sources add -Name AspNetVNext -Source https://dotnet.myget.org/F/aspnetcore-dev/api/v3/index.json
- - ps: "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://gist.githubusercontent.com/pksivanantham/393ee4ca2b035da6e1b72cbd3e9aed46/raw/b8b436c9806e1a8d8fd99d733c1ceb539f7ff285/dnxinstall.ps1'))}"
- - ps: dnvm install 1.0.0.0
- - ps: dnvm use 1.0.0.0
+# - ps: "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://gist.githubusercontent.com/pksivanantham/393ee4ca2b035da6e1b72cbd3e9aed46/raw/b8b436c9806e1a8d8fd99d733c1ceb539f7ff285/dnxinstall.ps1'))}"
+# - ps: dnvm install 1.0.0.0
+# - ps: dnvm use 1.0.0.0
 before_build:
- - ps: dnu restore
+ - ps: dotnet  restore
 test: off
 deploy: off
