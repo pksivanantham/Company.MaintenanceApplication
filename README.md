@@ -7,4 +7,4 @@ AppVeyor: [![Build status](https://ci.appveyor.com/api/projects/status/fxukvjd7c
 Travis :  [![Build Status](https://travis-ci.org/pksivanantham/Company.MaintenanceApplication.svg?branch=master)](https://travis-ci.org/pksivanantham/Company.MaintenanceApplication)
 
 Web based application for managing the maintenance records.
-
+It is build on top of ASP NET Core
