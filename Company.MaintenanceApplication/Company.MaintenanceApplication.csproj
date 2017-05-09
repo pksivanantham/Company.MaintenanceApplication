@@ -10,10 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\images\image1.jpg" />
-    <Content Include="wwwroot\images\image2.jpg" />
-    <Content Include="wwwroot\images\image3.jpg" />
-    <Content Include="wwwroot\images\image4.jpg" />
+    <Compile Remove="wwwroot\Videos\**" />
+    <Content Remove="wwwroot\Videos\**" />
+    <EmbeddedResource Remove="wwwroot\Videos\**" />
+    <None Remove="wwwroot\Videos\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Include="wwwroot\css\login.css" />
+    <Content Include="wwwroot\favicon-32x32.png" />
+    <Content Include="wwwroot\favicon.ico" />
+    <Content Include="wwwroot\images\favicon-32x32.png" />
+    <Content Include="wwwroot\images\favicon.ico" />
+    <Content Include="wwwroot\images\loginbg.jpg" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MailKit" Version="1.16.0" />
@@ -38,9 +48,6 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\Videos\" />
   </ItemGroup>
 
 </Project>

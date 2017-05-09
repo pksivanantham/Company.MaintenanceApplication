@@ -15,10 +15,10 @@ namespace Company.MaintenanceApplication.Services
             Options = options.Value;
         }
         public AuthMessageSenderOptions Options { get;  }
-        public Task SendEmailAsync(string email, string subject, string message)
+        public Task SendEmailAsync(string email, string subject, string message, string firstName = "", string lastName = "")
         {
             // Plug in your email service here to send an email.
-            return SendEmail(email, subject, message);
+            return SendEmail(email, subject, message,  firstName ,  lastName );
         }
 
         public Task SendSmsAsync(string number, string message)
@@ -27,12 +27,12 @@ namespace Company.MaintenanceApplication.Services
             return Task.FromResult(0);
         }
 
-        public  Task SendEmail(string email, string subject, string messageContent)
+        public  Task SendEmail(string email, string subject, string messageContent, string firstName = "", string lastName = "")
         {
 
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(Options.MailBoxUserDisplayName, Options.MailBoxUserName));
-            message.To.Add(new MailboxAddress("Welcome User", email));
+            message.To.Add(new MailboxAddress(firstName==""?"Welcome User":$"{firstName} {lastName}", email));
             message.Subject = subject;
 
             var bodyBuilder = new BodyBuilder();

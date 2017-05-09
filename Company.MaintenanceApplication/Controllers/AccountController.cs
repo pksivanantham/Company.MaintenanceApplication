@@ -132,7 +132,7 @@ namespace Company.MaintenanceApplication.Controllers
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.Action(nameof(ConfirmEmail), "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                     await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                        $"<b>Thanks for register</b><br>.Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a><br>Best regards<br>Sivanantham ");
+                        $"<b>Thanks for register</b><br>.Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a><br>Best regards<br>Sivanantham ",user.FirstName,user.LastName);
                    // await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
                     return RedirectToLocal(returnUrl);
@@ -401,7 +401,7 @@ namespace Company.MaintenanceApplication.Controllers
             var message = "Your security code is: " + code;
             if (model.SelectedProvider == "Email")
             {
-                await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message);
+                await _emailSender.SendEmailAsync(await _userManager.GetEmailAsync(user), "Security Code", message,user.FirstName,user.LastName);
             }
             else if (model.SelectedProvider == "Phone")
             {
