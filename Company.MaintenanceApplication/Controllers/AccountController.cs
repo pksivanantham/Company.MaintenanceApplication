@@ -12,9 +12,10 @@ using Microsoft.Extensions.Options;
 using Company.MaintenanceApplication.Models;
 using Company.MaintenanceApplication.Models.AccountViewModels;
 using Company.MaintenanceApplication.Services;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Company.MaintenanceApplication.Controllers
-{
+{    
     [Authorize]
     public class AccountController : Controller
     {
@@ -27,15 +28,14 @@ namespace Company.MaintenanceApplication.Controllers
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            IOptions<IdentityCookieOptions> identityCookieOptions,
+            SignInManager<ApplicationUser> signInManager, 
             IEmailSender emailSender,
             ISmsSender smsSender,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
+            _externalCookieScheme = IdentityConstants.ExternalScheme;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
@@ -48,7 +48,7 @@ namespace Company.MaintenanceApplication.Controllers
         public async Task<IActionResult> Login(string returnUrl = null)
         {
             // Clear the existing external cookie to ensure a clean login process
-            await HttpContext.Authentication.SignOutAsync(_externalCookieScheme);
+            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme); 
 
             ViewData["ReturnUrl"] = returnUrl;
             return View();

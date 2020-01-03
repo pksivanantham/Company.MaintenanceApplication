@@ -15,6 +15,8 @@ using Company.MaintenanceApplication.Services;
 using System.Data.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Company.MaintenanceApplication
 {
@@ -23,6 +25,7 @@ namespace Company.MaintenanceApplication
         string _dbConnectionString = null;
         public Startup(IHostingEnvironment env)
         {
+            //For adding user secrets https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-3.1&tabs=windows
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -59,6 +62,14 @@ namespace Company.MaintenanceApplication
             }).AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.ExpireTimeSpan = TimeSpan.FromDays(150);
+                options.LoginPath = "/Account/LogIn";
+                options.LogoutPath = "/Account/LogOff";
+            });
+
             services.AddMvc();
 
             // Add application services.
@@ -78,24 +89,28 @@ namespace Company.MaintenanceApplication
                 // Lockout settings
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
                 options.Lockout.MaxFailedAccessAttempts = 10;
-
-                // Cookie settings
-                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(150);
-                options.Cookies.ApplicationCookie.LoginPath = "/Account/LogIn";
-                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOff";
-
+                
                 // User settings
                 options.User.RequireUniqueEmail = true;
             });
+            
             //Configuring my mail box username and passwords in UserSecrets.json to custom class
             services.Configure<AuthMessageSenderOptions>(Configuration);
+
+            //Migration from 1.x to 2.x
+
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddConfiguration(Configuration.GetSection("Logging"));
+                loggingBuilder.AddConsole();
+
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {            
             //Redirecting HTTP requests to the HTTPS Connection
             var options = new RewriteOptions().AddRedirectToHttps();
                 if (env.IsDevelopment())
@@ -112,7 +127,7 @@ namespace Company.MaintenanceApplication
 
             app.UseStaticFiles();
 
-            app.UseIdentity();
+            app.UseAuthentication();
 
             // Add external authentication middleware below. To configure them please see https://go.microsoft.com/fwlink/?LinkID=532715
 
