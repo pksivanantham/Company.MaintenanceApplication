@@ -34,7 +34,8 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - Company.MaintenanceApplication</p>
+            <p>&copy; <span id="footer-year"></span> - Company.MaintenanceApplication</p>
+            <script type="text/JavaScript">document.getElementById("footer-year").innerHTML= new Date().getFullYear()</script>
         </footer>
     </div>
 
