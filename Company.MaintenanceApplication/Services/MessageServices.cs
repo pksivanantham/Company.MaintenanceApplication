@@ -1,6 +1,7 @@
 ﻿using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using System;
 using System.Threading.Tasks;
 
 namespace Company.MaintenanceApplication.Services
@@ -29,7 +30,8 @@ namespace Company.MaintenanceApplication.Services
 
         public  Task SendEmail(string email, string subject, string messageContent, string firstName = "", string lastName = "")
         {
-
+            if (string.IsNullOrEmpty(Options.MailBoxPassword)) throw new ArgumentNullException(nameof(Options.MailBoxPassword), $"Mailbox details should be configured in user-secrets");
+                    
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(Options.MailBoxUserDisplayName, Options.MailBoxUserName));
             message.To.Add(new MailboxAddress(firstName==""?"Welcome User":$"{firstName} {lastName}", email));
