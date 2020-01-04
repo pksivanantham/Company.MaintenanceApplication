@@ -81,7 +81,7 @@
                     <h4>Use another service to log in.</h4>
                     <hr />
                     @{
-                        var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
+                        var loginProviders =  (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
                         if (loginProviders.Count == 0)
                         {
                             <div>

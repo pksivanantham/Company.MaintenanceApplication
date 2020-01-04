@@ -1,5 +1,4 @@
-﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-@inject SignInManager<ApplicationUser> SignInManager
+﻿@inject SignInManager<ApplicationUser> SignInManager
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +7,6 @@
     <title>@ViewData["Title"] - Company.MaintenanceApplication</title>
     <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
     @{ await Html.RenderPartialAsync("_SiteCssPartial"); }
-    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
 @if (SignInManager.IsSignedIn(User))

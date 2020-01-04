@@ -24,7 +24,6 @@ namespace Company.MaintenanceApplication.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
-        private readonly string _externalCookieScheme;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
@@ -35,7 +34,6 @@ namespace Company.MaintenanceApplication.Controllers
         {
             _userManager = userManager;
             _signInManager = signInManager;
-            _externalCookieScheme = IdentityConstants.ExternalScheme;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
